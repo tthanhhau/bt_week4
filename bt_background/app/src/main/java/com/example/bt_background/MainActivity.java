@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
     private RelativeLayout mainLayout;
     private Switch switchChangeBackground;
     private List<Integer> backgroundList;
-    private int currentIndex = -1; // Vị trí hình nền hiện tại
+    private int currentIndex = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,11 +26,9 @@ public class MainActivity extends AppCompatActivity {
         mainLayout = findViewById(R.id.mainLayout);
         switchChangeBackground = findViewById(R.id.switchChangeBackground);
 
-        // Tạo danh sách hình nền và xáo trộn
         initBackgroundList();
-        changeBackground(); // Load hình nền ban đầu
+        changeBackground();
 
-        // Thay đổi hình nền khi bật/tắt Switch
         switchChangeBackground.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (isChecked) {
                 changeBackground();
@@ -44,13 +42,12 @@ public class MainActivity extends AppCompatActivity {
         backgroundList.add(R.drawable.bg2);
         backgroundList.add(R.drawable.bg3);
         backgroundList.add(R.drawable.bg4);
-        Collections.shuffle(backgroundList); // Xáo trộn danh sách
+        Collections.shuffle(backgroundList);
     }
 
     private void changeBackground() {
-        currentIndex++; // Chuyển sang hình tiếp theo
+        currentIndex++;
 
-        // Nếu đã hiển thị hết hình, xáo trộn lại
         if (currentIndex >= backgroundList.size()) {
             Collections.shuffle(backgroundList);
             currentIndex = 0;
